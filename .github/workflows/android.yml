@@ -38,7 +38,11 @@ jobs:
 
       - name: Ensure Android wrapper files
         # flutter create 不会覆盖已有文件，仅补全缺失的 gradle wrapper 等模板文件
-        run: flutter create . --platforms=android --org com.delta --project-name delta_bypass
+        run: |
+          flutter create . --platforms=android --org com.delta --project-name delta_bypass
+          # 移除 flutter create 生成的 Kotlin DSL 文件，避免与项目已有的 Groovy DSL 冲突
+          rm -f android/settings.gradle.kts android/build.gradle.kts android/app/build.gradle.kts
+          rm -rf .idea android/delta_bypass_android.iml delta_bypass.iml
 
       - name: Analyze
         run: flutter analyze

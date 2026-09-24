@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MiuixSmallTitle('设备信息'),
+                const MiuixSmallTitle('设备信息'),
                 const SizedBox(height: 12),
                 _infoRow(colors, ts, '机型', '$_brand $_model'),
                 const SizedBox(height: 12),
